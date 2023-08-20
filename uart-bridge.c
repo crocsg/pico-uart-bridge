@@ -301,7 +301,7 @@ int main(void)
 {
 	int itf;
 
-	set_sys_clock_khz(250000, false);
+	set_sys_clock_khz(130000, false);
 
 	usbd_serial_init();
 
@@ -312,11 +312,16 @@ int main(void)
 	gpio_set_dir(LED_PIN, GPIO_OUT);
 
 	multicore_launch_core1(core1_entry);
-
+	absolute_time_t now = get_absolute_time (void);
+	uint8_t led = 0;
 	while (1) {
 		for (itf = 0; itf < CFG_TUD_CDC; itf++) {
 			update_uart_cfg(itf);
 			uart_write_bytes(itf);
+		}
+		if (absolute_time_diff_us (now, get_absolute_time()) > 10000)
+		{
+			gpio_set_dir(LED_PIN, (led++) & 0x01);	
 		}
 	}
 
