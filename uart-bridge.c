@@ -322,7 +322,9 @@ int main(void)
 		if (absolute_time_diff_us (now, get_absolute_time()) > 10000)
 		{
 			gpio_set_dir(LED_PIN, (led++) & 0x01);	
+			now = get_absolute_time();
 		}
+		
 	}
 
 	return 0;
