@@ -8,6 +8,7 @@
 #include <hardware/uart.h>
 #include <pico/multicore.h>
 #include <pico/stdlib.h>
+#include <pico/time.h>
 #include <string.h>
 #include <tusb.h>
 
