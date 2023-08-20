@@ -313,7 +313,7 @@ int main(void)
 	gpio_set_dir(LED_PIN, GPIO_OUT);
 
 	multicore_launch_core1(core1_entry);
-	absolute_time_t now = get_absolute_time (void);
+	absolute_time_t now = get_absolute_time ();
 	uint8_t led = 0;
 	while (1) {
 		for (itf = 0; itf < CFG_TUD_CDC; itf++) {
