@@ -320,7 +320,7 @@ int main(void)
 			update_uart_cfg(itf);
 			uart_write_bytes(itf);
 		}
-		if (absolute_time_diff_us (now, get_absolute_time()) > 10000)
+		if (absolute_time_diff_us (now, get_absolute_time()) > 100000)
 		{
 			gpio_put(LED_PIN, (led++) & 0x01);	
 			now = get_absolute_time();
